@@ -180,7 +180,7 @@ function(ParseFile SourceFile TestTarget)
             endif()
 
             # Add the test and set its properties
-            add_test(NAME "\"${CTestName}\"" COMMAND ${OptionalCatchTestLauncher} ${TestTarget} ${Name} ${AdditionalCatchParameters})
+            add_test(NAME "\"${CTestName}\"" COMMAND ${OptionalCatchTestLauncher} $<TARGET_FILE:${TestTarget}> ${Name} ${AdditionalCatchParameters})
             if(PARSE_CATCH_TESTS_HIDDEN_TESTS_DISABLED AND ${HiddenTagFound})
                 PrintDebugMessage("Setting DISABLED test property")
                 set_tests_properties("\"${CTestName}\"" PROPERTIES DISABLED ON)
